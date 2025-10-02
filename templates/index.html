@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dependency Graph Analyzer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-3d">
+        <div class="floating-icon"><i class="fab fa-github"></i></div>
+        <div class="floating-icon"><i class="fab fa-python"></i></div>
+        <div class="floating-icon"><i class="fas fa-code-branch"></i></div>
+        <div class="floating-icon"><i class="fas fa-project-diagram"></i></div>
+    </div>
+
+    <div class="language-switcher">
+        <button class="language-btn" id="languageBtn">
+            <i class="fas fa-globe"></i>
+            <span class="language-text">EN</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="language-dropdown" id="languageDropdown">
+            <div class="language-option" data-lang="en">English</div>
+            <div class="language-option" data-lang="ru">Русский</div>
+            <div class="language-option" data-lang="es">Español</div>
+            <div class="language-option" data-lang="fr">Français</div>
+            <div class="language-option" data-lang="de">Deutsch</div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <section class="header-section">
+            <div class="logo-container">
+                <div class="logo-glow"></div>
+                <div class="logo-3d">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+            </div>
+            
+            <h1 class="modern-title" data-i18n="title">Dependency Graph Analyzer</h1>
+            <p class="modern-subtitle" data-i18n="subtitle">Visualize and analyze the dependency graph of any GitHub repository. Understand the structure and relationships between packages in your project.</p>
+            
+            <div class="modern-input-container">
+                <input type="text" class="modern-input" placeholder="Enter GitHub repository URL (e.g., https://github.com/user/repo)" data-i18n-placeholder="urlPlaceholder">
+                <i class="fab fa-github input-icon"></i>
+            </div>
+            
+            <button class="modern-btn btn-glow" data-i18n="analyzeBtn">
+                <i class="fas fa-play"></i> Analyze Dependencies
+            </button>
+            
+            <div class="modern-loading">
+                <div class="modern-spinner"></div>
+                <p style="color: rgba(255, 255, 255, 0.9);" data-i18n="analyzingText">Analyzing repository dependencies...</p>
+            </div>
+            
+          
+            <div class="modern-alert modern-error">
+                <i class="fas fa-exclamation-circle"></i> 
+                <span class="error-message" data-i18n="errorMessage">Please enter a valid GitHub repository URL.</span>
+            </div>
+            
+            <div class="modern-alert modern-success">
+                <i class="fas fa-check-circle"></i> 
+                <span class="success-message" data-i18n="successMessage">Repository analyzed successfully!</span>
+            </div>
+            
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+        
+        <section class="results-section">
+        
+            <div class="modern-panel" id="readme-section" style="display: none;">
+                <h2 class="panel-title" data-i18n="projectDescription">Project Description</h2>
+                <div class="readme-content">
+                    <p id="readme-content" style="color: #4a5568; line-height: 1.6;">Loading project description...</p>
+                </div>
+            </div>
+            
+            <div class="modern-panel">
+                <h2 class="panel-title" data-i18n="dependencyGraph">Dependency Graph</h2>
+                <div id="graph-image-container"></div>
+            </div>
+            
+            <div class="modern-stats">
+                <div class="modern-stat">
+                    <div class="stat-number" id="total-deps">0</div>
+                    <div class="stat-label" data-i18n="totalDeps">Total Dependencies</div>
+                </div>
+                <div class="modern-stat">
+                    <div class="stat-number" id="direct-deps">0</div>
+                    <div class="stat-label" data-i18n="directDeps">Direct Dependencies</div>
+                </div>
+                <div class="modern-stat">
+                    <div class="stat-number" id="transitive-deps">0</div>
+                    <div class="stat-label" data-i18n="transitiveDeps">Transitive Dependencies</div>
+                </div>
+                <div class="modern-stat">
+                    <div class="stat-number" id="vulnerabilities">0</div>
+                    <div class="stat-label" data-i18n="vulnerabilities">Vulnerabilities</div>
+                </div>
+            </div>
+            
+            
+      
+            <div class="modern-panel">
+                <h2 class="panel-title" data-i18n="dependencyDetails">Dependency Details</h2>
+                <div id="nodes-container"></div>
+            </div>
+
+            <div class="project-info" id="projectInfo" style="display: none;">
+                <h3>О проекте</h3>
+                <p id="projectDescription"></p>
+            </div>
+            
+        </section>
+        
+        <div class="modern-footer">
+            <p>Dependency Graph Analyzer &copy; 2025 | Built with <i class="fas fa-heart" style="color: #e53e3e;"></i> for developers</p>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
